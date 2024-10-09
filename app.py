@@ -96,7 +96,31 @@ elif options == "Line Chart" :
          ax.set_xlabel("X-axis")
          ax.set_ylabel("Y-axis")
          return fig
-     
+
+     st.title("Line Chart")
+     st.write("Line charts are powerful visualizations designed to help you easily understand data trends over time. By connecting individual data points with a continuous line, this chart makes it effortless to observe and analyze changes and patterns, especially in datasets that have a chronological sequence. Each line in the chart corresponds to a particular data set or variable, making it particularly effective when you want to compare multiple variables over the same period.")
+     st.write("## Purpose:")
+     st.write("The primary purpose of a line chart is to visualize changes, trends, and patterns in data over time or another continuous variable, like distance or progression in a process. It's ideal for detecting trends—whether upward, downward, cyclical, or constant—and helps in making predictions based on historical data.")
+     st.write("## Data Application:")
+     st.write("Line charts are especially effective when working with time-series data, such as:")
+     st.write("- Sales Figures: Observe monthly or quarterly revenue, and track performance.")
+     st.write("- Stock Market Prices: Display fluctuations in stock prices over weeks, months, or years.")
+     st.write("- Website Traffic: Analyze user visits or engagement levels across a given period.")
+     st.write("- Weather Data: Track changes in temperature, rainfall, or other meteorological data over time.")
+     st.write("The chart excels at making long-term trends clear and easily understandable. For example, a business might track its revenue over time to spot periods of growth or decline, while a scientist could use a line chart to show temperature variations over the course of several seasons.")
+     st.write("## Best Use Cases:")
+     st.write("- **Tracking Progress Over Time:** Line charts are perfect for tracking the growth or decline of a variable over a specific time frame, such as monthly sales figures, project milestones, or website user growth.")
+     st.write("- **Comparing Multiple Variables:** When you need to compare how several variables perform or change over the same period (e.g., revenue from different regions), a line chart with multiple lines makes it easy to see how they move in relation to each other.")
+     st.write("- **Spotting Trends and Patterns:** Whether you’re looking for seasonal trends, long-term growth, or sudden dips, a line chart helps you quickly spot these patterns in the data.")
+     st.write("- **Forecasting:** Since line charts make trends visible, they are often used to forecast future data points based on historical trends. For example, if sales are increasing steadily each month, the line chart can help predict future sales.")
+     st.write("## When to Use a Line Chart:")
+     st.write("- You have continuous data (usually time-based) and want to show the relationship or trend.")
+     st.write("- You need to compare multiple datasets over the same continuous variable.")
+     st.write("- You're interested in identifying turning points or key changes in your data (like sudden drops or spikes).")
+     st.write("However, avoid using line charts when your data points are disconnected or when you're dealing with categorical data that doesn’t follow a sequential pattern. In such cases, bar or column charts may be more suitable.")
+     st.write("In conclusion, line charts are an essential tool for spotting trends, analyzing performance, and comparing multiple variables over time. By providing a clear, visual representation of data, line charts allow you to make informed decisions based on historical and current data patterns.")
+
+
      st.title("Random Line Chart Generator")
      if st.button("Generate New Chart"):
         chart = generate_random_line_chart()
