@@ -37,7 +37,7 @@ if options == "Home" :
     st.title("PlotWizard : Unleash the Magic of Data Visualization! 🧙‍♂️📈")
     st.write("## Welcome to PlotWizard!")
     st.write("Your ultimate companion for exploring the world of data visualization. Whether you’re a beginner trying to understand basic chart types or a professional looking to sharpen your visualization skills, PlotWizard makes learning about data visualization fun, interactive, and easy to grasp.")
-    st.write("With PlotWizard, you can generate random charts with just a click, receive detailed explanations about them, and even get personalized help from our built-in chatbot, ChartBot. Ready to get started? Let us guide you!")
+    st.write("With PlotWizard, you can generate random charts with just a click, receive detailed explanations about them, and even get personalized help from our built-in chatbot ChartBots. Ready to get started? Let us guide you!")
     st.write("### 1. Generate a Random Chart")
     st.write("- At the heart of PlotWizard is the 'Generate Chart' button. Each time you click it, a unique chart will be generated from a variety of chart types such as:")
     st.write("- **Bar charts**")
