@@ -33,7 +33,7 @@ model = genai.GenerativeModel(
 )
 
 with st.sidebar :
-    st.image("images\White_AI Republic.png")
+    st.image("https://raw.githubusercontent.com/ALGOREX-PH/Plot-Wizard/refs/heads/main/images/White_AI%20Republic.png")
     with st.container() :
         l, m, r = st.columns((1, 3, 1))
         with l : st.empty()
