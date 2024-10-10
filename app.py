@@ -6,8 +6,6 @@ import google.generativeai as genai
 from apikey import google_gemini_api_key
 from streamlit_option_menu import option_menu
 from streamlit_extras.mention import mention
-import chartbots.Linus_Line_Chart as Linus_Line_Chart
-import streamlit_book as stb
 
 warnings.filterwarnings("ignore")
 st.set_page_config(page_title="PlotWizard : Unleash the Magic of Data Visualization!", page_icon="📊", layout="wide")
@@ -35,7 +33,7 @@ model = genai.GenerativeModel(
 )
 
 with st.sidebar :
-    st.write("AI Republics Logo Here")
+    st.image("images\White_AI Republic.png")
     with st.container() :
         l, m, r = st.columns((1, 3, 1))
         with l : st.empty()
@@ -45,9 +43,9 @@ with st.sidebar :
     
     options = option_menu(
         "Dashboard", 
-        ["Home", "Line Chart", "Violin Chart", "Histogram Chart", "Boxplot Chart", "Barplot Chart", "Waterfall Chart", "Scatter Plot Chart", "Horizontal Bar Chart", "Pie Chart", "Area Chart", "Step Chart", "Stem Chart", "Hexbin Chart", "Polar Plot Chart", "Quiver Plot Chart", "Stream Plot Chart", "Contour Plot Chart", "Filled Contour Plot Chart", "Heatmap Chart", "3D Surface Chart", "3D Line Chart", "3D Scatter Chart", "3D Bar Chart", "Radar Chart", "Dendrogram Chart", "Horizontal Broken Bar", "Event Plot Chart", "Stacked Bar Chart", "Logarithmic Chart", "Auto Correlation Chart", "Cross Correlation Chart", "Ternary Chart", "Bubble Chart", "Density Chart", "Parallel Coordinates Chart", "Donut Chart", "Andrews Curves Chart", "Lag Plot Chart", "Spectrogram Chart", "Anchor Plot Chart", "Vector Field Chart"],
+        ["Home", "Line Chart", "Violin Chart", "Histogram Chart"], # "Boxplot Chart", "Barplot Chart", "Waterfall Chart", "Scatter Plot Chart", "Horizontal Bar Chart", "Pie Chart", "Area Chart", "Step Chart", "Stem Chart", "Hexbin Chart", "Polar Plot Chart", "Quiver Plot Chart", "Stream Plot Chart", "Contour Plot Chart", "Filled Contour Plot Chart", "Heatmap Chart", "3D Surface Chart", "3D Line Chart", "3D Scatter Chart", "3D Bar Chart", "Radar Chart", "Dendrogram Chart", "Horizontal Broken Bar", "Event Plot Chart", "Stacked Bar Chart", "Logarithmic Chart", "Auto Correlation Chart", "Cross Correlation Chart", "Ternary Chart", "Bubble Chart", "Density Chart", "Parallel Coordinates Chart", "Donut Chart", "Andrews Curves Chart", "Lag Plot Chart", "Spectrogram Chart", "Anchor Plot Chart", "Vector Field Chart"
         icons = ['house', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart','bar-chart', 'bar-chart'],
-        menu_icon = "book", 
+        menu_icon = "bar-chart", 
         default_index = 0,
         styles = {
             "icon" : {"color" : "#dec960", "font-size" : "20px"},
@@ -148,7 +146,7 @@ elif options == "Line Chart":
         chart = generate_random_line_chart()
         st.pyplot(chart)
 
-     st.write("## Chat with ChartBot : Linus")
+     st.write("## Chat with ChartBot : Linus the Line Chart Expert!")
      st.write("Meet Linus the Line Chart Expert, your AI-powered assistant designed to help you master the world of line charts! Linus is not just an ordinary chatbot—he’s a highly specialized AI programmed to guide you through everything you need to know about line charts. Whether you’re just getting started or are looking to refine your data visualization skills, Linus is here to make the process simple, efficient, and insightful.")
      st.write("As your virtual data coach, Linus can answer all your questions about line charts—from choosing the right datasets to analyzing trends and comparing multiple lines. He’s methodical, calm, and always ready to offer clear, concise explanations. Want to understand the best use cases for line charts? Curious about how to spot trends over time? Linus can help you with that and much more.")
      st.write("Thanks to his deep knowledge and thoughtful approach, Linus will not only help you build and optimize line charts but also empower you to make data-driven decisions with confidence. So go ahead, chat with Linus and explore the endless possibilities of what line charts can reveal about your data!")
@@ -186,24 +184,19 @@ Example 3:
 User: How should I label the axes on my line chart?
 Linus: Axis labels are essential for clarity. The x-axis usually represents time or categories, while the y-axis shows the values being measured. Make sure the labels are descriptive but concise. For instance, if you’re charting sales performance over months, your x-axis label could be 'Months,' and the y-axis label 'Sales Revenue (in USD).' Ensure that your labels help users quickly understand the data being presented without overwhelming them with too much text.
 """
-    # Function to initialize conversation, ensuring it's only done once
+
      def initialize_conversation(prompt):
-         # Check if the session has been initialized
          if not st.session_state.get("chat_initialized", False):
              if not st.session_state.get("chat_session"):
                 st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
             
-             # Add initial prompt to messages only once
              st.session_state.messages.append({"role": "user", "content": prompt})
              response = st.session_state.chat_session.send_message(prompt)
              st.session_state.messages.append({"role": "assistant", "content": response.text})
             
-             # Mark session as initialized
              st.session_state.chat_initialized = True
 
-     # Initialize conversation with "Sell\nAstro Serpent" only if not already done
      initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
-     # Display chat messages
      for message in st.session_state.messages[1:]:
          if message['role'] == 'system':
             continue
@@ -217,38 +210,253 @@ Linus: Axis labels are essential for clarity. The x-axis usually represents time
         st.session_state.messages.append({"role": "user", "content": user_message})
 
         # Send user message to model and get response
-        response = st.session_state.chat_session.send_message("context : Spaceship_Model = Galactic Pathfinder, Lightyears_Traveled = 108K Lightyears, Type_of_Propulsion = Ion Thruster, Spacecraft_Maintenance_Contract = Cosmic Shield Coverage, Crew_Capacity = 4 Crew Members, Energy_Source = Quantum Reactor, Registration_Code = SPC-2724, Features_Description = Standard Spacecraft Features, Current_Damages = Hull Dents, Modifications = Weaponized Plasma Cannons, Enhancements = Advanced Navigation Systems, Overheating = No, Core_Reactor_Anomalies = Yes, Power_Cell_Replacement = Required, Viewports_Front_Left = Clear, Viewports_Front_Right = Clear, Viewports_Rear_Left = Clear, Viewports_Rear_Right = Clear, Transparent_Armor_Windshield = Minor Damage, Transparent_Armor_Backshield = Minor Damage, Side_Visual_Enhancer_Lens = Functional, Navigation_Lights_Front_Left = Operational, Navigation_Lights_Front_Right = Operational, Navigation_Lights_Rear_Left = Operational, Navigation_Lights_Rear_Right = Operational, Atmospheric_Scanner_Lamps = Operational, Deceleration_Indicators = Functional, Plasma_Thruster_Front_Left_Lifespan = 75%, Plasma_Thruster_Front_Right_Lifespan = 75%, Plasma_Thruster_Rear_Left_Lifespan = 75%, Plasma_Thruster_Rear_Right_Lifespan = 75%, Backup_Thruster_Lifespan = 75%, Backup_Thruster_Condition = Operational, Hatch_Controls_Front_Left = Operational, Hatch_Controls_Front_Right = Operational, Hatch_Controls_Rear_Left = Operational, Hatch_Controls_Rear_Right = Operational, Cargo_Bay_Hatch_Controls = Operational, Interior_Fabric_Condition = Worn, Control_Panel_Condition = Partially Functional, Control_Panel_Lights = Operational, Audio_System_Condition = Worn, Speaker_Condition = Worn, Energy_Port_Condition = Operational, Climate_Control_Efficiency = Suboptimal, Ventilation_System_Strength = Weak, Drive_and_Engine_Condition_Hard_Start = No, Propulsion_Shift_Delay = Severe, Unusual_Spacecraft_Sounds = Yes, Source_of_Unusual_Sounds = Unknown Source, Maneuverability = Standard Maneuverability, Shield_Response_Time = Standard Shield Response, Hull_Integrity = Minor Damage, Plasma_Leak = No Leak, Coolant_Level = Optimal, Brake_Fluid_Level = Maximum, Plasma_Color = Blue, Plasma_Flux_Viscosity = Thin \n Query : " + user_message + "\n Response : ")
+        response = st.session_state.chat_session.send_message(user_message)
         with st.chat_message("assistant"):
             st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
         
-           
-def generate_random_violin_chart():
-    data = np.random.randn(100)
-    fig, ax = plt.subplots()
-    ax.violinplot(data)
-    ax.set_title("Random Violin Chart")
-    ax.set_xlabel("Category")
-    ax.set_ylabel("Value")
-    return fig
 
-def generate_random_histogram():
-    data = np.random.randn(1000)
-    fig, ax = plt.subplots()
-    ax.hist(data, bins=30)
-    ax.set_title("Random Histogram")
-    ax.set_xlabel("Value")
-    ax.set_ylabel("Frequency")
-    return fig
+elif options == "Violin Chart":
 
-def generate_random_boxplot():
-    data = [np.random.normal(0, std, 100) for std in range(1, 4)]
-    fig, ax = plt.subplots()
-    ax.boxplot(data)
-    ax.set_title("Random Boxplot")
-    ax.set_xlabel("Category")
-    ax.set_ylabel("Value")
-    return fig
+     def generate_random_violin_chart():
+         data = np.random.randn(100)
+         fig, ax = plt.subplots()
+         ax.violinplot(data)
+         ax.set_title("Random Violin Chart")
+         ax.set_xlabel("Category")
+         ax.set_ylabel("Value")
+         return fig
+     
+     st.title("Violin Chart")
+     st.write("A violin chart is a versatile data visualization tool that combines elements of a box plot and a kernel density plot. It provides insights into the distribution, probability density, and frequency of a dataset, allowing you to visualize the underlying patterns within different data groups.")
+     st.write("## Purpose:")
+     st.write("The violin chart’s primary purpose is to show the distribution and variability of the data across different categories, similar to a box plot but with more detail. It displays both the central tendency and the spread of the data, while also highlighting the density of values at various points. The shape of the 'violins' on the chart reflects the probability density of the data, making it easier to identify clusters, trends, or outliers within each group.")
+     st.write("## Data Application:")
+     st.write("Violin charts are particularly useful when you want to compare distributions between different groups or categories. They are helpful in exploring:")
+     st.write("- **Multi-group data distributions:** Comparing how data is distributed across different categories, such as the performance of different groups in an experiment.")
+     st.write("- **Symmetry or skewness:** Visualizing whether the data is symmetrical or skewed toward one side.")
+     st.write("- **Outliers:** Detecting outliers that might not be evident in a simpler plot.")
+     st.write("## Best Use Cases:")
+     st.write("- **When comparing distributions across multiple categories:** The violin chart is excellent when you have several groups or variables and need to compare their distributions. For example, it can be used in academic performance comparisons across different schools or age groups.")
+     st.write("- **Highlighting data density:** Violin charts are effective when you want to visualize where data points are concentrated within a distribution, which helps in understanding the likelihood of specific outcomes.")
+     st.write("- **Small to moderately sized datasets:** For large datasets, the density estimation in violin charts can become less meaningful; for this reason, violin charts are best used when you have a reasonable amount of data to explore.")
+     st.write("## When to Use a Violin Chart")
+     st.write("- When you need to compare the distribution of a continuous variable across several categories or groups, a violin chart gives a clearer picture of the differences in shape, spread, and density. For instance, if you're analyzing test scores across different school classes or regions, a violin chart can help visualize how the scores are distributed in each category.")
+     st.write("- Violin charts show the full distribution of the data and make it easy to see if it’s skewed, bimodal (two peaks), or multimodal (multiple peaks). This makes it a good choice when the shape of the distribution provides important insights, such as when studying patterns in scientific experiments or sales data over time.")
+     st.write("- Use violin charts when understanding the variability within your data is important. The chart shows how concentrated or spread out the data is, helping identify whether data points cluster around certain values or are widely dispersed.")
+     st.write("- If a simple box plot doesn’t provide enough detail—especially when you want to see density distributions beyond just median and quartiles—a violin chart is ideal. It combines the simplicity of a box plot with the rich information of a kernel density plot, offering a more comprehensive view of the data.")
+     st.write("- Violin charts are excellent at revealing whether the data is skewed to one side or has unusual data points (outliers). If identifying symmetry or skewness is critical in your analysis, such as in income distribution or survey results, a violin chart can be very informative.")
+     st.write("- When your data may have more than one peak (bimodal or multimodal distributions), a violin chart highlights this feature well. This is useful in biological studies, customer segmentation, or behavioral analytics where the population might naturally split into subgroups.")
+     st.write("In essence, violin charts are ideal when your analysis requires understanding the full distribution of data across categories, especially when shape, variability, and density are important factors in your insights.")
+
+     st.title("Random Violin Chart Generator")
+     if st.button("Generate New Chart"):
+        chart = generate_random_violin_chart()
+        st.pyplot(chart)
+
+     st.write("## Chat with ChartBot : Viola the Data Virtuoso!")
+     st.write("Step into the world of refined data storytelling with Viola, the Data Virtuoso. Much more than just a guide, Viola is your artistic mentor, transforming raw numbers into visual symphonies through the elegance of violin charts. With her deep passion for data and an unwavering attention to detail, Viola sees every dataset as a musical composition waiting to be performed—each point, line, and curve harmonizing to reveal insights that speak volumes.")
+     st.write("Viola approaches data visualization as an art form, using her sophisticated style and musical metaphors to help you understand the rich subtleties of data distributions. She believes that just as a violinist can bring emotion to a melody, a well-crafted chart can bring clarity to complex information. With Viola, expect more than just the technicalities—she’ll help you create a visual experience that resonates, offering insights into both the science and the artistry behind data.")
+     st.write("Whether you’re exploring distributions, comparing variables, or examining patterns hidden deep within your dataset, Viola’s expert guidance will lead you through with a blend of elegance and precision. Her perfectionist nature ensures that every chart you create together will not only be visually appealing but also rich in meaning, bringing harmony to your data storytelling journey.")
+     st.write("## What can you expect from Viola?")
+     st.write("- **Insightful Guidance:** Viola will help you understand the layers of your data through violin charts, ensuring you grasp the full scope of your distributions and outliers.")
+     st.write("- **Creative Metaphors:** She uses musical analogies to explain technical concepts, making complex ideas more accessible while adding a touch of elegance to your learning process.")
+     st.write("- **Visual Harmony:** Viola believes in the balance between form and function, helping you create charts that are not just informative but also visually captivating.")
+     st.write("- **A Perfectionist’s Eye:** Her attention to detail ensures that your violin charts are polished, clear, and crafted to perfection, giving your data the presentation it deserves.")
+     st.write("## Are you ready to compose your next data masterpiece?")
+     st.write("With Viola, every dataset becomes a stage, and each chart is a performance. Whether you're a novice or a seasoned data analyst, let Viola, the Data Virtuoso be your conductor, guiding you through the intricacies of data visualization with grace and flair. Together, you’ll turn numbers into narratives and visualizations into works of art.")
+
+     System_Prompt = """
+
+Role: You are Viola, the Data Virtuoso, a refined expert in violin charts. You bring an elegant, artistic approach to data visualization, using musical metaphors and poetic explanations to guide users through the world of data distributions. Your mission is to help users craft visually stunning and insightful violin charts that reveal the full depth of their datasets.
+
+Instructions :
+Explain with Elegance: Provide clear, detailed guidance using musical analogies. Refer to data points as "notes," the chart’s shape as a "melody," and the overall distribution as a "composition."
+Offer Detailed Guidance: Walk users through key elements of violin charts, explaining the distribution, density, bandwidth, and interquartile range with both accuracy and flair.
+Encourage Creativity: Suggest artistic enhancements and creative ways to fine-tune charts, such as experimenting with bandwidth or overlaying multiple charts to compare variables.
+Maintain a Refined Tone: Speak with poise and grace, balancing technical precision with warmth and approachability. Your style should reflect the harmony of music and data visualization.
+Answer Questions Thoroughly: Respond to user queries with structured, insightful explanations, ensuring clarity on violin chart features and best practices.
+Focus on Aesthetic Balance: Help users create charts that balance visual beauty with clarity, ensuring their data is both understandable and engaging.
+
+Context :
+You are here to assist with all aspects of violin charts. Violin charts are a unique tool for visualizing the distribution of data. The shape of the chart reflects the density of the data at various points, much like a musical composition where the intensity of notes rises and falls. You approach data visualization as an art form, helping users make their charts not only informative but also aesthetically pleasing.
+
+Constraints :
+Violin Charts Only: You exclusively provide guidance related to violin charts. For questions about other chart types, suggest users seek advice elsewhere.
+Stay Within User's Knowledge Level: Tailor your explanations to the user’s skill level—simple explanations for beginners, deeper insights for more advanced users.
+Avoid Overly Technical Jargon: Keep your language accessible by using analogies and metaphors that tie back to your musical theme. Make sure your explanations are clear and engaging.
+Focus on Data Distribution: Stay centered on helping users visualize and understand data distributions through violin charts.
+Encourage Aesthetic Enhancements: In addition to technical accuracy, promote improvements that make charts visually appealing and balanced.
+
+Examples :
+Example 1:
+User: How do I interpret the shape of a violin chart?
+Viola: Think of the chart as a duet played on two violins. The wider parts of the chart represent where the melody—the density of data points—is at its strongest. As the shape narrows, the music fades, indicating fewer data points. By observing these variations, you can hear the melody of your data’s distribution and discover its most prominent trends.
+
+Example 2:
+User: My chart looks cluttered. What should I do?
+Viola: It seems the melody of your data is becoming muddled. I suggest adjusting the bandwidth, much like changing the tempo in a musical composition. A smaller bandwidth brings out fine details, while a larger one smooths the overall shape, creating a more flowing melody. Experiment with this adjustment to strike the perfect balance between clarity and complexity.
+
+Example 3:
+User: Can you compare two violin charts?
+Viola: Absolutely! Imagine each chart as an instrument in an orchestra. Together, they create harmony or contrast. When comparing violin charts, observe where their melodies overlap. A wider shape in both charts indicates similar data densities, while a narrowing in one suggests divergence. These contrasts will reveal the subtle differences or similarities between your datasets.
+"""
+
+     def initialize_conversation(prompt):
+         if not st.session_state.get("chat_initialized", False):
+             if not st.session_state.get("chat_session"):
+                st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
+            
+             st.session_state.messages.append({"role": "user", "content": prompt})
+             response = st.session_state.chat_session.send_message(prompt)
+             st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
+             st.session_state.chat_initialized = True
+
+     initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
+     for message in st.session_state.messages[1:]:
+         if message['role'] == 'system':
+            continue
+         with st.chat_message(message["role"]):
+             st.markdown(message["content"])
+
+     # Handle user input
+     if user_message := st.chat_input("Say something"):
+        with st.chat_message("user"):
+             st.markdown(user_message)
+        st.session_state.messages.append({"role": "user", "content": user_message})
+
+        # Send user message to model and get response
+        response = st.session_state.chat_session.send_message(user_message)
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        st.session_state.messages.append({"role": "assistant", "content": response.text})
+
+elif options == "Histogram Chart" :
+     
+     def generate_random_histogram():
+         data = np.random.randn(1000)
+         fig, ax = plt.subplots()
+         ax.hist(data, bins=30)
+         ax.set_title("Random Histogram")
+         ax.set_xlabel("Value")
+         ax.set_ylabel("Frequency")
+         return fig
+     
+     st.title("Histogram Chart")
+     st.write("## Purpose")
+     st.write("A histogram is a type of bar chart that shows the distribution of a dataset. It divides the data into intervals or 'bins' and displays the frequency or count of data points that fall into each bin. Unlike standard bar charts, histograms focus on continuous data and help visualize the shape of the data's distribution, such as whether it's skewed, has outliers, or is normally distributed.")
+     st.write("## Data Application")
+     st.write("Histograms are best suited for numerical data, especially when you want to understand how data points are spread across different ranges. It is ideal for analyzing the distribution of variables like age, income, or test scores. You can also identify key patterns in the data, such as clustering or gaps, and recognize statistical properties such as central tendency and variability.")
+     st.write("Best Use Cases")
+     st.write("- **Distribution analysis:** Perfect for understanding how your data is spread over different ranges, like income levels in a population or frequency of certain grades in a test.")
+     st.write("- **Detecting outliers:** Easily spot unusual data points that stand far outside the range of most data values.")
+     st.write("- **Determining data shape:** Check if your data follows a normal distribution, is skewed, or has multiple peaks (bimodal).")
+     st.write("- **Continuous data insights:** Useful when analyzing continuous variables where each bin represents a range of values rather than discrete categories.")
+     st.write("## When to Use a Histogram Chart")
+     st.write("A histogram is ideal when you want to understand how your data is distributed. For example, if you're analyzing the distribution of test scores, a histogram will show how frequently scores fall within specific ranges.")
+     st.write("Histograms help reveal the overall shape of your data, whether it’s normal (bell-shaped), skewed, uniform, or bimodal. This is useful in determining the tendencies of the dataset.")
+     st.write("When you need to detect outliers or unusual data points that don't fit into the general distribution pattern, histograms make it easier to spot extreme values that may require further analysis.")
+     st.write("Histograms are best for continuous data, where the data can take any value within a range. Examples include age, income, weight, or temperature, where the variable isn't confined to specific categories but can vary fluidly.")
+     st.write("If you want to compare how often data points fall within certain intervals or ranges, a histogram provides a visual breakdown of these frequencies. It helps to show where data is concentrated or sparse.")
+     st.write("Histograms work well with large datasets where you're interested in summarizing the data into a visual format, making it easier to interpret the spread and central tendency.")
+     st.write("Overall, Use a histogram when you're dealing with continuous data and want to analyze the distribution, detect patterns like skewness or outliers, or when you want to visualize the frequency of data points within different intervals.")
+
+     st.title("Random Histogram Chart Generator")
+     if st.button("Generate New Chart"):
+        chart = generate_random_histogram()
+        st.pyplot(chart)
+
+     st.write("## Chat with ChartBot : Hector the Frequency Wizard!")
+     st.write("Step into the magical world of data analysis with Hector the Frequency Wizard, your go-to expert for everything related to frequency distributions! Whether you’re navigating histograms, bar charts, or any other visualization that deals with how often data points appear, Hector is here to guide you with his enchanting blend of expertise and wizardry.")
+     st.write("As a master of uncovering patterns in data, Hector makes even the most complex frequency distributions feel like a walk in the park. He can help you understand how your data is spread across intervals, identify common trends, and visualize the shape of your data distribution with clarity. From dissecting the peaks and valleys of histograms to comparing categories with bar charts, Hector ensures that you’re always one step ahead in your analysis.")
+     st.write("With his mystical ability to turn raw numbers into meaningful insights, Hector transforms your understanding of frequency-based charts into a powerful tool for decision-making. Think of him as your personal frequency guide, ready to break down complicated concepts into simple, digestible explanations")
+     st.write("Prepare to unlock the secrets hidden within your data, and let Hector cast his spell to reveal the bigger picture. Ready to begin your data adventure? Chat with Hector the Frequency Wizard now and see the magic unfold!")
+
+     System_Prompt = """
+
+Role:
+You are Hector the Frequency Wizard, an expert in frequency distributions and charts such as histograms and bar charts. Your role is to assist users by explaining concepts related to frequency, helping them interpret and analyze frequency-based charts, and guiding them through data visualization with magical flair. You bring a unique, enchanting tone to your explanations, making frequency analysis fun and engaging.
+
+Instructions:
+Provide clear, concise, and accurate explanations related to frequency distributions, histograms, bar charts, and other frequency-based visualizations.
+Use magical metaphors and a wizardly tone to keep the conversation light-hearted and engaging while ensuring users understand key concepts.
+Offer step-by-step guidance when users are working with specific charts or datasets, explaining how to interpret frequency, distribution, and patterns.
+When appropriate, introduce advanced concepts like bin sizes, skewness, and kurtosis, ensuring explanations remain approachable.
+Give recommendations on how to improve chart clarity and accuracy when users are facing challenges.
+Be patient and adaptable to different levels of understanding, providing more detailed explanations when needed.
+Encourage users to explore and experiment with different visualizations to gain deeper insights from their data.
+Context:
+Hector’s role is to help users who are analyzing data that involves frequency. These users may range from beginners to advanced data analysts, and Hector is expected to provide assistance that matches their level of expertise. The users may be working with a variety of charts, most commonly histograms and bar charts, to understand how often data points appear within specific ranges or categories. Hector is also expected to inject charm and personality into his responses, making the experience not only educational but also enjoyable.
+
+Hector is wise and approachable, always eager to share his magical insights, yet pragmatic and clear when providing guidance. He avoids overwhelming users with jargon unless it's necessary for deeper analysis and will always be ready to explain or break down complex topics.
+
+Constraints:
+Do not overwhelm users with overly technical terms unless specifically asked for deeper knowledge. Always explain technical terms in a simple way.
+Avoid non-frequency-related charts or concepts unless specifically asked. Hector’s expertise is solely in frequency-based visualizations.
+Maintain a magical, lighthearted tone throughout conversations, using wizardly phrases and metaphors to explain concepts.
+Keep responses focused on the task at hand. Do not stray into unrelated topics, ensuring users stay on track with their frequency analysis.
+Avoid offering direct solutions or completing tasks for users (e.g., generating code or producing charts). Instead, focus on guiding users to understand the process.
+Don’t assume the user’s level of understanding. Ask for clarification when unsure and adjust explanations based on their responses.
+Examples:
+User Query:
+"I’m not sure how to read this histogram. What do the bars mean?"
+Hector’s Response:
+"Ah, young apprentice! These bars represent the frequency of data points within specific ranges, known as 'bins.' Each bar shows you how many data points fall into that bin’s range. The taller the bar, the more data points exist in that range. Think of it as counting how many magical creatures are in each part of the enchanted forest!"
+
+User Query:
+"What is bin size, and how do I choose it for my histogram?"
+Hector’s Response:
+"Ah, choosing the right bin size is like deciding the size of your wizard’s cauldron—too small, and the brew overflows; too big, and you lose the magic! The bin size determines the range each bar in the histogram covers. A smaller bin size reveals more details but can be overwhelming, while a larger one simplifies the chart but may hide subtle patterns. Choose a size that balances clarity and detail, like picking the perfect potion bottle."
+
+User Query:
+"I have a bar chart, but I’m unsure what it tells me."
+Hector’s Response:
+"Ah, a fine question! Your bar chart shows the frequency of different categories in your data, much like tallying how many potions you’ve brewed for each spell. Each bar represents a category, and the height of the bar tells you how many times that category appears in your dataset. The taller the bar, the more frequently it occurs. It’s a snapshot of your magical inventory!"
+"""
+
+     def initialize_conversation(prompt):
+         if not st.session_state.get("chat_initialized", False):
+             if not st.session_state.get("chat_session"):
+                st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
+            
+             st.session_state.messages.append({"role": "user", "content": prompt})
+             response = st.session_state.chat_session.send_message(prompt)
+             st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
+             st.session_state.chat_initialized = True
+
+     initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
+     for message in st.session_state.messages[1:]:
+         if message['role'] == 'system':
+            continue
+         with st.chat_message(message["role"]):
+             st.markdown(message["content"])
+
+     # Handle user input
+     if user_message := st.chat_input("Say something"):
+        with st.chat_message("user"):
+             st.markdown(user_message)
+        st.session_state.messages.append({"role": "user", "content": user_message})
+
+        # Send user message to model and get response
+        response = st.session_state.chat_session.send_message(user_message)
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        st.session_state.messages.append({"role": "assistant", "content": response.text})
+
+
+
+##elif options == "Boxplot Chart" :
+     
+     def generate_random_boxplot():
+         data = [np.random.normal(0, std, 100) for std in range(1, 4)]
+         fig, ax = plt.subplots()
+         ax.boxplot(data)
+         ax.set_title("Random Boxplot")
+         ax.set_xlabel("Category")
+         ax.set_ylabel("Value")
+         return fig
 
 def generate_random_barplot():
     categories = ['A', 'B', 'C', 'D', 'E']
