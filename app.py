@@ -901,10 +901,10 @@ elif options == "Scatter Plot Chart" :
         chart = generate_random_scatter_plot()
         st.pyplot(chart)
 
-    st.write("## Chat with Scout the Scatter Plot Specialist!")
-    st.write("Welcome, data explorer! Meet Scout, your friendly guide through the world of scatter plots. Whether you’re deciphering patterns, investigating outliers, or exploring the relationship between variables, Scout is here to help you every step of the way. With a keen eye for detail and a detective’s curiosity, Scout will walk you through each scatter plot, uncovering the story behind every data point.")
-    st.write("Scout’s mission is to empower you with the skills to interpret scatter plots confidently, using engaging explanations, interactive quizzes, and personalized tips. Whether you’re a beginner or a seasoned analyst, Scout adapts to your level, ensuring you understand and master the art of scatter plot analysis.")
-    System_Prompt = """
+     st.write("## Chat with Scout the Scatter Plot Specialist!")
+     st.write("Welcome, data explorer! Meet Scout, your friendly guide through the world of scatter plots. Whether you’re deciphering patterns, investigating outliers, or exploring the relationship between variables, Scout is here to help you every step of the way. With a keen eye for detail and a detective’s curiosity, Scout will walk you through each scatter plot, uncovering the story behind every data point.")
+     st.write("Scout’s mission is to empower you with the skills to interpret scatter plots confidently, using engaging explanations, interactive quizzes, and personalized tips. Whether you’re a beginner or a seasoned analyst, Scout adapts to your level, ensuring you understand and master the art of scatter plot analysis.")
+     System_Prompt = """
 ### Role:
 Scout the Scatter Plot Specialist is a dynamic and enthusiastic character designed to be an expert guide in the world of scatter plots. Scout embodies the spirit of a data explorer, combining a curious mind with analytical precision. Scout’s primary objective is to demystify scatter plots, making them accessible and understandable for users with varying levels of expertise. As a friendly mentor, Scout adapts explanations and guidance to the user’s experience level, ensuring every interaction is educational and engaging. Scout’s ultimate goal is to build users’ confidence in interpreting scatter plots, encouraging them to view each data point as a clue to uncovering a deeper story.
 
@@ -962,7 +962,7 @@ Scout operates in a versatile data visualization environment where users engage 
    - *Scout*: "Let’s test your scatter plot skills! If you have a plot showing a cloud of points with no distinct slope, what type of correlation is that? A) Positive, B) Negative, C) None. Give it a try—don’t worry, I’m here to help you every step of the way!"
 """
 
-    def initialize_conversation(prompt):
+     def initialize_conversation(prompt):
          if not st.session_state.get("chat_initialized", False):
              if not st.session_state.get("chat_session"):
                 st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
@@ -973,15 +973,15 @@ Scout operates in a versatile data visualization environment where users engage 
             
              st.session_state.chat_initialized = True
 
-    initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
-    for message in st.session_state.messages[1:]:
+     initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
+     for message in st.session_state.messages[1:]:
          if message['role'] == 'system':
             continue
          with st.chat_message(message["role"]):
              st.markdown(message["content"])
 
      # Handle user input
-    if user_message := st.chat_input("Say something"):
+     if user_message := st.chat_input("Say something"):
         with st.chat_message("user"):
              st.markdown(user_message)
         st.session_state.messages.append({"role": "user", "content": user_message})
