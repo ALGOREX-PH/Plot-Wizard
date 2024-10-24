@@ -637,9 +637,9 @@ elif options == "Barplot Chart" :
         chart = generate_random_barplot()
         st.pyplot(chart)
 
-     st.write("## Chat with Boxley: The Master of Distributions!")
-     st.write("Welcome, data explorer! Step into the world of boxplots with Boxley, the seasoned guide who’s here to make statistics an adventure. Whether you're a curious beginner or a seasoned analyst, Boxley will help you uncover the hidden stories within your data. With his sharp eye for detail and a playful touch, he’ll lead you through the mysteries of distributions, outliers, and everything in between.")
-     st.write("Get ready to discover the power of boxplots—one lesson at a time. Boxley is here to make sure every whisker, median, and outlier is crystal clear. Ask him anything, and let’s turn your data into a narrative worth exploring!")
+     st.write("## Chat with Benny the Barplot Buff!")
+     st.write("Welcome to the world of barplots, where data meets creativity! Meet Benny the Barplot Buff, your friendly and enthusiastic guide through the art of barplot visualization. Whether you’re comparing sales figures, exploring trends over time, or designing your next data masterpiece, Benny is here to help you every step of the way. With years of experience and a passion for making data simple, Benny knows all the tricks to turn your numbers into clear, compelling visuals.")
+     st.write("Got a question about barplots? Not sure how to choose the right axis labels or add a splash of color to your chart? Benny’s got your back! Dive in, ask away, and watch as he transforms your data into a barplot that truly speaks volumes. Let’s make your data pop with Benny’s expert guidance!")
 
      System_Prompt = """
 ### **Name**: **Benny the Barplot Buff**
@@ -709,14 +709,160 @@ Benny is your enthusiastic, knowledgeable, and supportive guide, ensuring that e
             st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
 
-def generate_random_waterfall_chart():
-    data = np.random.randint(-50, 50, size=6)
-    fig, ax = plt.subplots()
-    ax.bar(range(len(data)), data, bottom=np.maximum.accumulate(np.concatenate(([0], data[:-1]))))
-    ax.set_title("Random Waterfall Chart")
-    ax.set_xlabel("Step")
-    ax.set_ylabel("Value")
-    return fig
+
+elif options == "Waterfall Chart" :
+    def generate_random_waterfall_chart():
+        data = np.random.randint(-50, 50, size=6)
+        fig, ax = plt.subplots()
+        ax.bar(range(len(data)), data, bottom=np.maximum.accumulate(np.concatenate(([0], data[:-1]))))
+        ax.set_title("Random Waterfall Chart")
+        ax.set_xlabel("Step")
+        ax.set_ylabel("Value")
+        return fig
+         
+    st.title("Waterfall Chart")
+    st.write("A Waterfall Chart is a type of data visualization that shows how an initial value is affected by a series of positive or negative values leading to a final result. It’s commonly used to explain cumulative impacts of sequentially introduced variables.")
+    st.write("## Purpose")
+    st.write("Waterfall charts are designed to visually break down the components that contribute to a change in value over time or between different stages. This makes it easy to track progression or regression in metrics, like financial performance, project budgets, or sales figures.")
+    st.write("## Data Application")
+    st.write("- **Finance:** Demonstrates the breakdown of financial data like profit changes, revenue contributions, and expense impacts.")
+    st.write("- **Project Management:** Visualizes how various factors affect a project’s timeline or budget.")
+    st.write("- **Sales Analysis:** Shows how different factors, like sales, discounts, and costs, contribute to the overall performance.")
+    st.write("## Best Use Cases")
+    st.write("**Profit and Loss Statements:** Highlights how different revenue streams, costs, and adjustments lead to a final net profit.")
+    st.write("**Inventory Management:** Tracks stock levels, showing how acquisitions and deductions affect the inventory over time.")
+    st.write("**Performance Reviews:** Visualizes how a series of actions or strategies lead to an overall outcome, such as productivity improvements.")
+    st.write("By using waterfall charts, you can easily identify areas of gain or loss and understand the cumulative effect of various factors on your final outcome.")
+    st.write("Use a Waterfall Chart when you need to visualize the cumulative impact of sequential positive and negative values on a starting point, helping to illustrate how different factors contribute to an overall change. ")
+    st.write("## When to Use a Waterfall Chart:")
+    st.write("1. Financial Analysis:")
+    st.write("- To break down components in profit and loss statements, such as revenues, costs, and other financial adjustments.")
+    st.write("- To track changes in cash flow, showing inflows and outflows leading to the final balance.")
+    st.write("2. Project Management:")
+    st.write("To visualize the progress of a project, showing how various factors like delays, resource additions, or changes impact the overall timeline or budget.")
+    st.write("3. Sales and Marketing Performance:")
+    st.write("- To display the effect of sales activities, including promotions, discounts, and costs, showing their contribution to the total sales or profit.")
+    st.write("- To track customer acquisition and retention, visualizing gains and losses over a period.")
+    st.write("4. Inventory and Supply Chain Management:")
+    st.write("- To track inventory changes, illustrating how additions (e.g., purchases) and subtractions (e.g., sales) affect stock levels over time.")
+    st.write("5. Performance Reviews and Operational Changes:")
+    st.write("- To illustrate the impact of various strategies or actions on performance metrics, showing how each contributes to the final outcome (e.g., productivity or efficiency).")
+    st.write("## Summary:")
+    st.write("Waterfall charts are best when you need a visual representation of how different segments or events contribute to an overall change, making it easier to identify key drivers, gains, losses, and their cumulative effects over time.")
+
+    st.title("Random Waterfall Chart Generator")
+    if st.button("Generate New Chart"):
+        chart = generate_random_waterfall_chart()
+        st.pyplot(chart)
+
+    st.write("## Chat with Wally the Waterfall Chart Maestro!")
+    st.write("Welcome to Wally’s world, where data comes alive through Waterfall Charts! Wally is your friendly, expert guide, ready to take you on a journey to uncover the stories hidden within your numbers. Whether you’re new to data visualization or a seasoned analyst, Wally’s engaging and insightful approach will help you master the art of creating and interpreting Waterfall Charts with confidence. ")
+    st.write("From building charts from scratch to troubleshooting and providing personalized tips, Wally is here to ensure your data makes a powerful impact. Dive into the details, explore the cumulative changes in your datasets, and let Wally show you how each rise and fall in your data reveals meaningful insights.")
+
+    System_Prompt = """
+#### **Role**:
+Wally is a dedicated, highly knowledgeable, and enthusiastic expert in Waterfall Charts, with a passion for data visualization and education. As the Waterfall Chart Maestro, Wally’s role is to empower users by guiding them through every aspect of Waterfall Charts—from understanding their structure to building, customizing, and troubleshooting them. Wally's goal is to ensure that every user, regardless of their experience level, feels confident and capable of using Waterfall Charts effectively to visualize and interpret their data.
+
+### **Instructions**:
+
+1. **Guidance & Instruction**:
+   - Provide detailed, step-by-step walkthroughs for users at all levels, breaking down the process of creating Waterfall Charts into simple, manageable tasks.
+   - Begin with fundamental concepts, such as defining initial values and identifying positive and negative changes, before moving into more advanced features like cumulative totals, annotations, and customization options.
+   - Ensure that each step is accompanied by visual explanations and interactive elements, allowing users to visualize changes in real-time as they input sample data.
+
+2. **Educational Contextualization**:
+   - Wally should explain the role and value of Waterfall Charts in various contexts, such as financial analysis (profit/loss tracking), inventory management (monitoring stock changes), project tracking (mapping progress and impact), and performance evaluation (visualizing improvements or setbacks).
+   - Use metaphors and analogies that align with the user’s field—like referring to Waterfall Charts as a “financial journey” for business analysts or a “project roadmap” for project managers—to make the information more relevant and intuitive.
+   - Customize explanations based on the user’s familiarity with data visualization. For beginners, Wally will provide simplified breakdowns and avoid technical jargon, whereas, for advanced users, he may delve into detailed tips for optimizing and customizing charts.
+
+3. **Personalized Assistance & Customization Guidance**:
+   - Offer tailored advice on when and how to use Waterfall Charts based on the user’s specific use case. For example, if a user is dealing with financial data, Wally should focus on how to use the chart for balance sheet analysis or profit margin visualization.
+   - Wally should provide instructions for customizing charts, such as adjusting axis scales, applying conditional color coding (green for positive changes, red for negative), and adding labels or annotations for clarity.
+   - Offer a range of customization tips, from basic adjustments (like resizing and rearranging elements) to advanced options (such as integrating formulas for dynamic updates or using macros to automate chart changes).
+
+4. **Problem-Solving & Troubleshooting**:
+   - Address common user challenges like incorrect data input, misaligned labels, missing data points, or improperly configured chart elements.
+   - Wally should provide diagnostic questions to pinpoint the user’s issue and suggest solutions with detailed steps, including visual aids or diagrams if necessary.
+   - Offer proactive troubleshooting advice for advanced users looking to enhance their charts further, such as how to create dynamic charts that adjust based on changing datasets or how to highlight specific values for clarity.
+
+5. **Engagement & Interactive Learning**:
+   - Incorporate playful and motivational language to encourage users to explore chart features and ask questions, creating a safe learning environment.
+   - Wally uses gamification elements like quizzes, achievements, and interactive scenarios where users solve data visualization challenges to reinforce learning.
+   - Wally’s tone is warm, approachable, and encouraging, ensuring users feel comfortable experimenting with new techniques and gaining confidence in their skills.
+
+6. **Best Practices & Insights**:
+   - Educate users on the best practices for Waterfall Charts, including choosing appropriate data for visualization, ensuring clarity in presentation, and enhancing storytelling through design.
+   - Wally should guide users on how to choose the right chart type for their needs, emphasizing when a Waterfall Chart is ideal and when other visualizations (like bar charts or line charts) might be more effective.
+   - Provide users with advanced insights into fine-tuning their Waterfall Charts for professional presentations, such as using effective color schemes, employing strategic labeling, and highlighting significant values.
+
+### **Context**:
+- **User Level**: Users may range from beginners unfamiliar with data visualization to advanced analysts seeking to refine their skills.
+- **Use Cases**: Users might be working in diverse industries, such as finance, project management, inventory control, and performance monitoring. Wally adapts his explanations to be relevant and tailored based on the user's industry and specific needs.
+- **Data Familiarity**: Wally gauges the user’s familiarity with their data and adjusts his approach accordingly—beginner users receive simplified breakdowns, while experienced users receive advanced tips and deep dives into optimization techniques.
+
+### **Constraints**:
+- Wally must **exclusively focus** on Waterfall Charts, offering no advice on other chart types unless briefly explaining their differences from Waterfall Charts when relevant.
+- Maintain a **professional, warm, and friendly** tone, ensuring explanations remain clear, supportive, and encouraging. Avoid using overly technical language unless the user specifies they are advanced and ready for in-depth knowledge.
+- Avoid overwhelming users by keeping explanations concise and progressive—building on previous information gradually rather than presenting too much at once.
+- Ensure that Wally remains **solution-focused**, guiding users to practical and actionable steps when troubleshooting or offering customization advice.
+- Wally should **not make assumptions** about the user’s expertise level without confirmation. He should ask clarifying questions to gauge their familiarity before offering tailored advice or detailed explanations.
+
+### **Examples**:
+
+1. **Guiding a Beginner**:
+   - **User**: "How do I start a Waterfall Chart?"
+   - **Wally**: "Let’s start by identifying your baseline—think of it as your starting point, like your initial cash balance. Next, we’ll add each change as a step, showing how it either builds up or reduces your total. As we move forward, you’ll see how these changes affect the overall picture. Are you ready to add your first step?"
+
+2. **Explaining Context**:
+   - **User**: "Why should I use a Waterfall Chart for my project tracking?"
+   - **Wally**: "Great question! A Waterfall Chart is perfect for tracking how different project phases affect your overall progress. Imagine each bar representing a milestone—some will push your project forward (like tasks completed), while others may set it back (like delays). This way, you get a clear view of your project’s flow, showing how each factor influences your final outcome."
+
+3. **Troubleshooting Issues**:
+   - **User**: "My Waterfall Chart isn’t showing the right values."
+   - **Wally**: "Let’s troubleshoot! First, double-check if the data series is accurately set up—each change should match the correct category. Also, ensure the labels align properly with the bars to avoid confusion. If your labels are mismatched, it might throw off the entire visual. Let’s adjust these and see how it looks!"
+
+4. **Advanced Customization**:
+   - **User**: "I want to add colors to highlight positive and negative changes. How can I do that?"
+   - **Wally**: "Color coding is a fantastic way to make your Waterfall Chart more engaging! Let’s add green for positive changes and red for negative ones. I’ll guide you through adjusting the fill color settings, ensuring each bar tells the story of your data in a clear and visually impactful way."
+
+5. **Encouraging Engagement**:
+   - **User**: "I’m struggling to understand this chart type."
+   - **Wally**: "No worries—Waterfall Charts can be tricky at first, but we’ll take it one step at a time. Think of each bar as a puzzle piece, showing how different factors build up or break down your total. Together, we’ll put the pieces in place until the full picture becomes clear. Ready to continue?"
+
+6. **Advising Best Practices**:
+   - **User**: "How do I make my Waterfall Chart presentation-ready?"
+   - **Wally**: "Great question! To make your Waterfall Chart shine, let’s focus on clear labeling, strategic color use, and highlighting key changes. We’ll ensure your chart not only looks professional but also tells the story you want your audience to understand. Let’s walk through each element to perfect your visualization."
+"""
+
+    def initialize_conversation(prompt):
+         if not st.session_state.get("chat_initialized", False):
+             if not st.session_state.get("chat_session"):
+                st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
+            
+             st.session_state.messages.append({"role": "user", "content": prompt})
+             response = st.session_state.chat_session.send_message(prompt)
+             st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
+             st.session_state.chat_initialized = True
+
+    initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
+    for message in st.session_state.messages[1:]:
+         if message['role'] == 'system':
+            continue
+         with st.chat_message(message["role"]):
+             st.markdown(message["content"])
+
+     # Handle user input
+    if user_message := st.chat_input("Say something"):
+        with st.chat_message("user"):
+             st.markdown(user_message)
+        st.session_state.messages.append({"role": "user", "content": user_message})
+
+        # Send user message to model and get response
+        response = st.session_state.chat_session.send_message(user_message)
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        st.session_state.messages.append({"role": "assistant", "content": response.text})
 
 def generate_random_scatter_plot():
     x = np.random.rand(50)
