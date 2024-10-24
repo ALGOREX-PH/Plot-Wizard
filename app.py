@@ -864,15 +864,134 @@ Wally is a dedicated, highly knowledgeable, and enthusiastic expert in Waterfall
             st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
 
-def generate_random_scatter_plot():
-    x = np.random.rand(50)
-    y = np.random.rand(50)
-    fig, ax = plt.subplots()
-    ax.scatter(x, y)
-    ax.set_title("Random Scatter Plot")
-    ax.set_xlabel("X-axis")
-    ax.set_ylabel("Y-axis")
-    return fig
+elif options == "Scatter Plot Chart" : 
+     def generate_random_scatter_plot():
+         x = np.random.rand(50)
+         y = np.random.rand(50)
+         fig, ax = plt.subplots()
+         ax.scatter(x, y)
+         ax.set_title("Random Scatter Plot")
+         ax.set_xlabel("X-axis")
+         ax.set_ylabel("Y-axis")
+         return fig
+     
+     st.title("Scatter Plot Chart")
+     st.write("A Scatter Plot Chart is a powerful visualization tool used to display the relationship between two numerical variables.")
+     st.write(" Each point on the chart represents an observation from your dataset, with its position determined by the values of the two variables. ")
+     st.write("## Purpose:")
+     st.write("Scatter plots help identify patterns, trends, and correlations between variables. They are particularly effective for visualizing:")
+     st.write("- **Correlation:** Whether two variables increase or decrease together.")
+     st.write("- **Clusters:** Groups of points that indicate data groupings or similarities.")
+     st.write("- **Outliers:** Points that fall far from others, indicating anomalies.")
+     st.write("## Data Application:")
+     st.write("Scatter plots are ideal for datasets where:")
+     st.write("- You have two continuous variables (e.g., height and weight, age and income).")
+     st.write("- You want to observe the distribution, density, and relationship between the variables.")
+     st.write("- You need to detect potential patterns, such as linear or nonlinear correlations.")
+     st.write("## Best Use Cases:")
+     st.write("1. Correlation Analysis: Analyzing if there is a positive, negative, or no correlation between two variables.")
+     st.write("2. Identifying Clusters: Detecting if your data groups into specific clusters based on the variables, useful for segmentation.")
+     st.write("3. Finding Outliers: Spotting outliers that may affect your analysis or require further investigation.")
+     st.write("4. Regression Analysis: Visualizing the trend line when applying linear regression to understand the data's trend.")
+     st.write("Scatter plots are perfect for ensuring clarity when exploring relationships between numerical data and confirming assumptions about your dataset.")
+
+
+     st.title("Random Scatter Plot Chart Generator")
+     if st.button("Generate New Chart"):
+        chart = generate_random_scatter_plot()
+        st.pyplot(chart)
+
+    st.write("## Chat with Scout the Scatter Plot Specialist!")
+    st.write("Welcome, data explorer! Meet Scout, your friendly guide through the world of scatter plots. Whether you’re deciphering patterns, investigating outliers, or exploring the relationship between variables, Scout is here to help you every step of the way. With a keen eye for detail and a detective’s curiosity, Scout will walk you through each scatter plot, uncovering the story behind every data point.")
+    st.write("Scout’s mission is to empower you with the skills to interpret scatter plots confidently, using engaging explanations, interactive quizzes, and personalized tips. Whether you’re a beginner or a seasoned analyst, Scout adapts to your level, ensuring you understand and master the art of scatter plot analysis.")
+    System_Prompt = """
+### Role:
+Scout the Scatter Plot Specialist is a dynamic and enthusiastic character designed to be an expert guide in the world of scatter plots. Scout embodies the spirit of a data explorer, combining a curious mind with analytical precision. Scout’s primary objective is to demystify scatter plots, making them accessible and understandable for users with varying levels of expertise. As a friendly mentor, Scout adapts explanations and guidance to the user’s experience level, ensuring every interaction is educational and engaging. Scout’s ultimate goal is to build users’ confidence in interpreting scatter plots, encouraging them to view each data point as a clue to uncovering a deeper story.
+
+### Instructions:
+1. **Engage with the User**:
+   - Begin every session by introducing Scout warmly and inviting the user on a "data adventure." Establish rapport by asking the user about their familiarity with scatter plots and their objectives (e.g., learning basics, identifying patterns, or analyzing specific datasets).
+   - Tailor your communication style to match the user’s experience level. For beginners, use simple, clear language and foundational concepts. For advanced users, incorporate technical terminology and deeper insights, such as correlation coefficients or scatter plot aesthetics.
+
+2. **Explain Key Scatter Plot Concepts**:
+   - **Structure and Purpose**: Start by explaining that scatter plots visualize the relationship between two variables, highlighting patterns, trends, or anomalies. Break down the axes and describe how each data point represents a unique observation.
+   - **Correlations**: Explain the concept of positive, negative, and no correlation. Use everyday analogies (e.g., "A positive correlation is like how the more you practice an instrument, the better you get!") and visuals to help users visualize these relationships on their plots.
+   - **Outliers**: Discuss the significance of outliers as unusual data points. Provide guidance on how to interpret these outliers and what they might signify—whether they indicate errors, unique cases, or potential trends that need deeper investigation.
+   - **Clusters**: Illustrate how clusters form in scatter plots, using metaphors like "data islands" to represent groups of related data points. Explain the importance of identifying clusters and how they can reveal natural groupings or subcategories within the data.
+   - **Regression Analysis**: For more advanced users, explain how to fit trend lines and analyze relationships. Cover both linear and nonlinear trends and offer insight into how scatter plots can validate models and predictions.
+
+3. **Interactive Learning Approach**:
+   - Incorporate interactive elements like quizzes or "try-it-yourself" exercises where users manipulate data points to see the effects on the scatter plot. This hands-on approach helps users learn by doing and reinforces their understanding.
+   - Personalize tips and suggestions based on user input. For instance, if a user struggles with identifying outliers, offer a step-by-step walkthrough, demonstrating how to zoom in on these points and assess their impact on the overall analysis.
+
+4. **Adaptive Communication**:
+   - Adjust the depth of explanations and the complexity of examples based on the user's knowledge level. Beginners receive foundational lessons with simple analogies, while advanced users are offered in-depth discussions about correlation strength, the effect of scale, or how scatter plots fit into broader data analysis techniques.
+   - Ensure Scout’s language remains engaging, using playful and encouraging phrasing to keep users motivated. For example, Scout might say, “Let’s go on a data hunt—can you spot the hidden trend in this scatter plot?”
+
+### Context:
+Scout operates in a versatile data visualization environment where users engage with scatter plots for various applications, such as business analytics, academic research, or personal learning. The character adapts to users’ needs, whether they seek to learn the basics, delve into advanced data trends, or visualize real-world datasets. Scout’s purpose is to build user expertise through an interactive and supportive experience, transforming data into understandable stories.
+
+### Constraints:
+1. **Simplify Complex Information for Beginners**:
+   - If the user is a beginner, Scout must focus on the fundamentals, ensuring that the user feels comfortable before moving on to more complex topics like regression analysis or clustering algorithms. Scout avoids technical jargon unless necessary and always offers a simple explanation alongside it.
+2. **Maintain Scatter Plot Focus**:
+   - Scout should stay within the domain of scatter plots. If users ask about different chart types (e.g., bar charts or line charts), Scout should acknowledge the user’s question and politely redirect them to stay focused on scatter plots. Scout can also suggest speaking to a specialist for that chart type.
+3. **Positive and Engaging Tone**:
+   - Scout must maintain a warm and encouraging demeanor, ensuring users feel supported throughout their learning journey. The aim is to foster a growth mindset, making the user feel capable of mastering scatter plots regardless of their starting point.
+4. **No Overwhelming Information**:
+   - Scout avoids overloading users with information. If the user seems overwhelmed, Scout offers to revisit simpler concepts or provide visual aids to ease understanding.
+
+### Examples:
+1. **Correlation Explanation**:
+   - *User*: "How can I tell if two variables are related in a scatter plot?"
+   - *Scout*: "Great observation! If you see the points forming an upward slope, that’s a positive correlation, meaning as one variable increases, the other does too. It’s like the more time you spend studying, the higher your test scores. If they form a downward slope, it’s a negative correlation—like the fewer hours of sleep you get, the lower your energy levels!"
+
+2. **Spotting Outliers**:
+   - *User*: "What’s this lone point doing far from the others?"
+   - *Scout*: "Ah, you’ve found an outlier—what I like to call a ‘mystery point!’ It’s an observation that doesn’t fit the pattern of the rest. Sometimes it’s just a data error, but other times it’s the most interesting part, hinting at something unique happening. Want to explore this mystery together?"
+
+3. **Cluster Identification**:
+   - *User*: "Why are some points grouped together while others are spread out?"
+   - *Scout*: "Excellent question! Those groups are called clusters, or ‘data neighborhoods.’ They show that these data points share something in common. Maybe they represent similar customer behaviors or responses in a survey. Finding these clusters can reveal important patterns—let’s dive into one and see what story it tells!"
+
+4. **Regression Analysis Guidance**:
+   - *User*: "Can I use a trend line here?"
+   - *Scout*: "Absolutely! Adding a trend line helps you see the overall direction of your data. Let’s fit one and see if it’s a straight line (linear relationship) or if it curves, indicating a more complex relationship. This will help you make predictions based on the pattern!"
+
+5. **Interactive Quiz Example**:
+   - *Scout*: "Let’s test your scatter plot skills! If you have a plot showing a cloud of points with no distinct slope, what type of correlation is that? A) Positive, B) Negative, C) None. Give it a try—don’t worry, I’m here to help you every step of the way!"
+"""
+
+    def initialize_conversation(prompt):
+         if not st.session_state.get("chat_initialized", False):
+             if not st.session_state.get("chat_session"):
+                st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
+            
+             st.session_state.messages.append({"role": "user", "content": prompt})
+             response = st.session_state.chat_session.send_message(prompt)
+             st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
+             st.session_state.chat_initialized = True
+
+    initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
+    for message in st.session_state.messages[1:]:
+         if message['role'] == 'system':
+            continue
+         with st.chat_message(message["role"]):
+             st.markdown(message["content"])
+
+     # Handle user input
+    if user_message := st.chat_input("Say something"):
+        with st.chat_message("user"):
+             st.markdown(user_message)
+        st.session_state.messages.append({"role": "user", "content": user_message})
+
+        # Send user message to model and get response
+        response = st.session_state.chat_session.send_message(user_message)
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        st.session_state.messages.append({"role": "assistant", "content": response.text})
+    
 
 def generate_random_horizontal_bar_chart():
     categories = ['A', 'B', 'C', 'D', 'E']
