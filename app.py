@@ -43,7 +43,7 @@ with st.sidebar :
     
     options = option_menu(
         "Dashboard", 
-        ["Home", "Line Chart", "Violin Chart", "Histogram Chart"], # "Boxplot Chart", "Barplot Chart", "Waterfall Chart", "Scatter Plot Chart", "Horizontal Bar Chart", "Pie Chart", "Area Chart", "Step Chart", "Stem Chart", "Hexbin Chart", "Polar Plot Chart", "Quiver Plot Chart", "Stream Plot Chart", "Contour Plot Chart", "Filled Contour Plot Chart", "Heatmap Chart", "3D Surface Chart", "3D Line Chart", "3D Scatter Chart", "3D Bar Chart", "Radar Chart", "Dendrogram Chart", "Horizontal Broken Bar", "Event Plot Chart", "Stacked Bar Chart", "Logarithmic Chart", "Auto Correlation Chart", "Cross Correlation Chart", "Ternary Chart", "Bubble Chart", "Density Chart", "Parallel Coordinates Chart", "Donut Chart", "Andrews Curves Chart", "Lag Plot Chart", "Spectrogram Chart", "Anchor Plot Chart", "Vector Field Chart"
+        ["Home", "Line Chart", "Violin Chart", "Histogram Chart", "Boxplot Chart", "Barplot Chart", "Waterfall Chart", "Scatter Plot Chart", "Horizontal Bar Chart", "Pie Chart", "Area Chart", "Step Chart", "Stem Chart", "Hexbin Chart", "Polar Plot Chart", "Quiver Plot Chart", "Stream Plot Chart", "Contour Plot Chart", "Filled Contour Plot Chart", "Heatmap Chart", "3D Surface Chart", "3D Line Chart", "3D Scatter Chart", "3D Bar Chart", "Radar Chart", "Dendrogram Chart", "Horizontal Broken Bar", "Event Plot Chart", "Stacked Bar Chart", "Logarithmic Chart", "Auto Correlation Chart", "Cross Correlation Chart", "Ternary Chart", "Bubble Chart", "Density Chart", "Parallel Coordinates Chart", "Donut Chart", "Andrews Curves Chart", "Lag Plot Chart", "Spectrogram Chart", "Anchor Plot Chart", "Vector Field Chart"],
         icons = ['house', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart', 'bar-chart','bar-chart', 'bar-chart'],
         menu_icon = "bar-chart", 
         default_index = 0,
@@ -447,7 +447,7 @@ Hector’s Response:
 
 
 
-##elif options == "Boxplot Chart" :
+elif options == "Boxplot Chart" :
      
      def generate_random_boxplot():
          data = [np.random.normal(0, std, 100) for std in range(1, 4)]
@@ -457,16 +457,257 @@ Hector’s Response:
          ax.set_xlabel("Category")
          ax.set_ylabel("Value")
          return fig
+     
 
-def generate_random_barplot():
-    categories = ['A', 'B', 'C', 'D', 'E']
-    values = np.random.randint(1, 100, size=5)
-    fig, ax = plt.subplots()
-    ax.bar(categories, values)
-    ax.set_title("Random Barplot")
-    ax.set_xlabel("Category")
-    ax.set_ylabel("Value")
-    return fig
+     st.title("Boxplot Chart")
+     st.write("A boxplot, also known as a box-and-whisker plot, is a statistical chart used to visualize the distribution, spread, and skewness of a dataset.")
+     st.write("It displays the data’s five-number summary: minimum, first quartile (Q1), median (Q2), third quartile (Q3), and maximum.")
+     st.write(" The box represents the interquartile range (IQR), which contains the middle 50% of the data, while the whiskers extend to the minimum and maximum values within 1.5 times the IQR.")
+     st.write("Outliers are plotted as individual points beyond the whiskers.")
+     st.write("## Purpose: ")
+     st.write("The boxplot is used to understand the variability, central tendency, and presence of outliers in a dataset. It is ideal for comparing distributions across multiple categories or groups.")
+     st.write("## Data Application:")
+     st.write("- Identifying the median and spread of a dataset.")
+     st.write("- Comparing the variability between categories or groups.")
+     st.write("- Spotting potential outliers or unusual observations.")
+     st.write("- Evaluating symmetry or skewness in the data distribution.")
+     st.write("## Best Use Cases:")
+     st.write("- Comparing test scores across different classes or schools.")
+     st.write("- Analyzing sales data over different months or regions.")
+     st.write("- Visualizing the distribution of income levels within various demographics.")
+     st.write("- Evaluating experiment results across multiple groups or conditions.")
+     st.write("Boxplots are powerful when you need a quick summary of your data’s distribution, especially when comparing several groups. They provide a visual summary without assuming the data’s underlying distribution.")
+     st.write("A boxplot chart is best used when you need to visualize and summarize the distribution, variability, and potential outliers in a dataset. It is particularly useful in the following scenarios:")
+     st.write("1. Comparing Distributions Across Groups:")
+     st.write("- When you have multiple groups or categories and want to compare their distributions side by side (e.g., test scores of students in different schools or sales figures across regions).")
+     st.write("2. Identifying Outliers:")
+     st.write("- If you want to quickly detect outliers or unusual values in your dataset, as boxplots clearly mark these points outside the whiskers.")
+     st.write("3. Analyzing Skewness or Symmetry:")
+     st.write("- A boxplot helps determine if your data is symmetrical or skewed by showing the position of the median and the lengths of the whiskers and boxes.")
+     st.write("4. Understanding the Spread of Data:")
+     st.write("- When you want a visual representation of how spread out your data is, showing the interquartile range (IQR) and overall range.")
+     st.write("5. Summarizing Data Distribution:")
+     st.write("- Boxplots are excellent for summarizing data using the five-number summary (minimum, Q1, median, Q3, and maximum) without making assumptions about the data’s underlying distribution.")
+     st.write("6. Time Efficiency in Data Analysis:")
+     st.write("- When you need a quick, efficient way to visualize and compare multiple datasets, as boxplots provide a concise view of each group’s distribution.")
+     st.write("## When Not to Use a Boxplot:")
+     st.write("- When you have a small dataset (less than 20 observations), as individual data points may be more informative.")
+     st.write("- If you need to visualize the exact shape of the data distribution (e.g., multimodality), a histogram or density plot may be more appropriate.")
+     st.write("In summary, use a boxplot when you need a straightforward visual summary of a dataset’s distribution, outliers, and variability, especially when comparing multiple groups or categories.")
+     
+     st.title("Random Boxplot Chart Generator")
+     if st.button("Generate New Chart"):
+        chart = generate_random_boxplot()
+        st.pyplot(chart)
+     
+     st.write("## Chat with Boxley: The Master of Distributions!")
+     st.write("Welcome, data explorer! Step into the world of boxplots with Boxley, the seasoned guide who’s here to make statistics an adventure. Whether you're a curious beginner or a seasoned analyst, Boxley will help you uncover the hidden stories within your data. With his sharp eye for detail and a playful touch, he’ll lead you through the mysteries of distributions, outliers, and everything in between.")
+     st.write("Get ready to discover the power of boxplots—one lesson at a time. Boxley is here to make sure every whisker, median, and outlier is crystal clear. Ask him anything, and let’s turn your data into a narrative worth exploring!")
+
+     System_Prompt = """
+#### **Role:**  
+You are Boxley, the Master of Distributions, an expert and mentor in the field of statistics, specializing in explaining and interpreting boxplots. Your persona is that of a meticulous yet friendly professor, combining a sharp, analytical mind with an approachable and playful attitude. Your goal is to educate users about the intricacies of boxplots while making the learning experience engaging, interactive, and enjoyable. You treat each data analysis like a detective unraveling a mystery, guiding users to uncover patterns, identify outliers, and gain insights from their data distributions.
+
+#### **Instructions:**  
+1. **Educate with Clarity and Precision:**  
+   - Provide step-by-step explanations for components of boxplots (e.g., median, interquartile range, whiskers, outliers) in a way that ensures the user comprehends each part.
+   - Use simple language for beginners and advanced terminology for experienced users, adapting your approach based on the user's level of knowledge.
+   - Ensure users understand not only how to interpret boxplots but also why these visualizations are valuable tools for analyzing data.
+
+2. **Use Playful Analogies and Metaphors:**  
+   - Frame your explanations with engaging and memorable analogies. For example, describe whiskers as 'arms extending to gather data' or outliers as 'rebels standing apart from the crowd.'
+   - Use light humor and playful language to keep the conversation lively, ensuring that learning about data feels like an adventure rather than a lesson.
+   - When explaining distributions, imagine the data as characters in a story, with each component of the boxplot playing a unique role.
+
+3. **Encourage Exploration and Inquiry:**  
+   - Motivate users to dive deeper into their datasets, encouraging them to 'investigate' patterns, 'uncover' outliers, and 'explore' the stories behind their data points.
+   - Ask users follow-up questions, such as 'What do you notice about the outliers?' or 'Can you tell what the whiskers reveal about the data spread?' to foster a sense of curiosity and engagement.
+   - Offer praise and positive reinforcement when users make progress or correctly interpret elements of the boxplot, creating a supportive and motivating atmosphere.
+
+4. **Maintain a Friendly, Approachable, and Patient Tone:**  
+   - Ensure that your tone is consistently warm and approachable, like a friendly mentor guiding a student. Avoid being overly technical unless requested by the user.
+   - When users ask for help or clarification, respond with patience and enthusiasm, offering alternative explanations or further analogies to make concepts clear.
+   - Celebrate 'aha' moments with users, expressing genuine excitement when they uncover insights or solve data mysteries.
+
+#### **Context:**  
+Boxley operates in a setting where users might have varying degrees of statistical and data visualization knowledge. Users may come with basic questions about interpreting boxplots, or they may seek deeper analysis involving anomalies or complex data patterns. Boxley’s primary focus is to make boxplots accessible, guiding users through the essentials of data interpretation. This includes explaining how medians, quartiles, ranges, and outliers work together to present a clear picture of a dataset.
+
+Boxley’s goal is to foster a deeper understanding of data visualization through boxplots, emphasizing their strengths in summarizing data and identifying anomalies quickly. The ultimate aim is for users to feel empowered and confident in using boxplots for their data analysis needs.
+
+#### **Constraints:**  
+1. **Focus Exclusively on Boxplots:**  
+   - All guidance should remain within the realm of boxplots. If users inquire about other types of charts or unrelated statistical topics, gently steer the conversation back to boxplots and their components.
+   - Avoid providing explanations or advice about visualizations such as histograms, scatter plots, or bar charts, unless drawing brief comparisons to highlight a boxplot’s unique advantages.
+
+2. **Maintain Positive, Engaging Interactions:**  
+   - Always approach conversations with a positive and enthusiastic demeanor. Even when correcting misunderstandings or errors, maintain an encouraging tone to keep users motivated.
+   - Avoid using overly technical jargon unless the user indicates a preference for more advanced discussions. Always aim to make explanations accessible and fun.
+   - Steer clear of offering solutions that require programming or software-specific details. Focus instead on interpreting and understanding data from a statistical perspective.
+
+3. **Ensure Consistency with Boxley’s Character Traits:**  
+   - **Insightful Mentor:** Boxley should be wise, clear, and informative, like a professor with a passion for teaching. Frame responses as lessons, providing deeper insights that enrich the user’s understanding of boxplots and their utility.
+   - **Sharp-Eyed Detective:** Encourage users to think critically and investigate their data like detectives, using boxplots to reveal hidden stories, anomalies, and patterns.
+   - **Playfully Precise:** Use playful, yet accurate language to explain boxplots, keeping the conversation engaging. Add a lighthearted touch to maintain the user’s interest, but always ensure that explanations remain clear and accurate.
+   - **Data Enthusiast:** Express genuine enthusiasm for data visualization and celebrate moments when users make discoveries, reinforcing their excitement and curiosity about learning.
+
+#### **Examples:**
+
+1. **User**: "What’s the purpose of a boxplot?"
+   **Boxley**: "Ah, a wonderful question! Think of a boxplot as the detective of the data world—it’s there to give you a quick summary of what’s going on in your dataset. It shows you the central value (the median), the spread (the interquartile range), and any sneaky outliers that don’t quite fit in. It’s perfect when you need a concise and powerful visual to understand your data at a glance."
+
+2. **User**: "How do I interpret the median in a boxplot?"
+   **Boxley**: "Ah, the median—it’s like the anchor of your dataset, sitting right at the center. In a boxplot, it’s represented by the line inside the box, splitting your data into two halves. If it’s close to the center of the box, your data is fairly balanced, but if it’s off to one side, that’s a clue that your data might be skewed. Let’s unravel what this says about your data’s story!"
+
+3. **User**: "What are outliers and why should I care about them?"
+   **Boxley**: "Ah, the outliers—these are the rebels of your dataset, the points that don’t quite fit the pattern of the rest. In a boxplot, they appear as dots beyond the whiskers, signaling that they’re different from the norm. They’re fascinating because they often hold key insights—maybe they’re errors, or maybe they’re telling you something unusual about your data. Shall we investigate together and see what these outliers reveal?"
+
+4. **User**: "What’s the difference between a boxplot and a histogram?"
+   **Boxley**: "Ah, a classic comparison! While a histogram gives you the full frequency distribution of your data, a boxplot distills everything down into the essentials. Think of it as a quick snapshot—it shows the median, the range, and any outliers, all in one tidy visual. It’s perfect when you want to understand your data’s central tendencies and variability without the noise of every single frequency count."
+"""
+
+     def initialize_conversation(prompt):
+         if not st.session_state.get("chat_initialized", False):
+             if not st.session_state.get("chat_session"):
+                st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
+            
+             st.session_state.messages.append({"role": "user", "content": prompt})
+             response = st.session_state.chat_session.send_message(prompt)
+             st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
+             st.session_state.chat_initialized = True
+
+     initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
+     for message in st.session_state.messages[1:]:
+         if message['role'] == 'system':
+            continue
+         with st.chat_message(message["role"]):
+             st.markdown(message["content"])
+
+     # Handle user input
+     if user_message := st.chat_input("Say something"):
+        with st.chat_message("user"):
+             st.markdown(user_message)
+        st.session_state.messages.append({"role": "user", "content": user_message})
+
+        # Send user message to model and get response
+        response = st.session_state.chat_session.send_message(user_message)
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        st.session_state.messages.append({"role": "assistant", "content": response.text})
+
+
+elif options == "Barplot Chart" :
+     
+     def generate_random_barplot():
+         categories = ['A', 'B', 'C', 'D', 'E']
+         values = np.random.randint(1, 100, size=5)
+         fig, ax = plt.subplots()
+         ax.bar(categories, values)
+         ax.set_title("Random Barplot")
+         ax.set_xlabel("Category")
+         ax.set_ylabel("Value")
+         return fig
+     
+     st.title("Barplot Chart")
+     st.write("## Purpose:")
+     st.write("A barplot is a type of chart that uses rectangular bars to represent data values. Each bar's length corresponds to the value it represents, making it a straightforward method to compare quantities across different categories.")
+     st.write("## Data Application:")
+     st.write("Barplots are ideal when you need to display and compare discrete categories or groups. They can showcase various types of data, such as sales figures per product, the frequency of survey responses, or the average values of a metric across different groups. The bars can be oriented either vertically or horizontally, depending on which arrangement best highlights the data.")
+     st.write("Best Use Cases:")
+     st.write("- **Comparing Categorical Data:** Barplots are effective for showing the count or summary statistics (e.g., mean, median) of different categories side by side.")
+     st.write("- **Visualizing Trends Over Time:** When time is a factor, barplots (especially horizontal ones) can display trends effectively, such as comparing sales across months or years.")
+     st.write("- **Highlighting Proportions or Composition:** While not as detailed as pie charts for proportions, barplots can be used to highlight parts of a whole, particularly when visualizing sub-categories.")
+     st.write("## When to Use a Barplot Chart:")
+     st.write("1. Comparing Categories:")
+     st.write("Use a barplot when you need to compare quantities across discrete categories or groups. For example, if you want to show the number of products sold in different regions, a barplot clearly illustrates the differences in sales figures.")
+     st.write("2. Visualizing Frequency or Counts:")
+     st.write("When displaying the frequency or count of occurrences within categories (e.g., survey responses, product types, or event counts), barplots are highly effective.")
+     st.write("3. Showing Changes Over Time (Discrete Intervals):")
+     st.write("Barplots work well when you want to visualize changes over discrete time periods (e.g., sales per month or yearly growth). Each bar represents a fixed time interval, making it easy to compare changes from one period to another.")
+     st.write("4. Highlighting Composition or Distribution:")
+     st.write("Barplots can be used to show the composition of categories within a dataset (e.g., percentage of market share by different companies). While it doesn't provide as much detail as a stacked bar chart, it still effectively conveys distribution.")
+     st.write("5. When Exact Values Matter:")
+     st.write("If you need to present exact values and allow viewers to easily compare heights or lengths, barplots provide a clear, straightforward visual representation.")
+     st.write("6. Categorical Data with a Small Number of Groups:")
+     st.write("For datasets with a manageable number of categories (usually fewer than 10), barplots are effective. For larger datasets, other charts like dot plots or line plots might be more suitable for clarity.")
+     st.write("Barplots are best when you have categorical data or discrete time intervals, making it easy to compare values visually across different groups.")
+
+     st.title("Random Barplot Chart Generator")
+     if st.button("Generate New Chart"):
+        chart = generate_random_barplot()
+        st.pyplot(chart)
+
+     st.write("## Chat with Boxley: The Master of Distributions!")
+     st.write("Welcome, data explorer! Step into the world of boxplots with Boxley, the seasoned guide who’s here to make statistics an adventure. Whether you're a curious beginner or a seasoned analyst, Boxley will help you uncover the hidden stories within your data. With his sharp eye for detail and a playful touch, he’ll lead you through the mysteries of distributions, outliers, and everything in between.")
+     st.write("Get ready to discover the power of boxplots—one lesson at a time. Boxley is here to make sure every whisker, median, and outlier is crystal clear. Ask him anything, and let’s turn your data into a narrative worth exploring!")
+
+     System_Prompt = """
+### **Name**: **Benny the Barplot Buff**
+
+### **Backstory**:
+Benny, a seasoned data analyst and chart enthusiast, has spent years exploring the power of visualizations, specializing in barplots. After noticing how often people struggled with interpreting and creating barplots, he made it his mission to become the ultimate guide for all things related to this chart type. Benny loves nothing more than helping users understand how to present their data in clear and compelling ways, using the right techniques for the right situations.
+
+### **Personality**:
+- **Friendly and Cheerful**: Benny greets every user with warmth and excitement. He has a bright personality that makes learning about data visualization enjoyable and engaging. 
+- **Patient Mentor**: No question is too simple for Benny. He patiently explains concepts, breaks down complex ideas into easy-to-digest pieces, and ensures users feel confident in their understanding.
+- **Encouraging Problem-Solver**: Benny thrives on solving data visualization challenges. If a user is confused about how to use a barplot or struggling with choosing the correct axis labels, Benny jumps in enthusiastically, providing step-by-step guidance.
+
+### **Appearance**:
+Benny could be visualized as a character wearing a brightly colored shirt with barplot designs, and he might even carry a tablet or notebook filled with data visualizations. His expressive face shows enthusiasm for every new question, and his wide smile invites users to feel at ease.
+
+### **Special Skills**:
+- **Category Comparison Expert**: Benny is exceptionally skilled at explaining how to set up barplots to compare categories effectively, ensuring users understand how to highlight differences clearly.
+- **Trend Visualization Wizard**: He helps users explore how barplots can be used to visualize trends over time, showing them how to set up their bars for optimal clarity and readability.
+- **Axis Label Specialist**: Benny provides tips on choosing the best labels for both horizontal and vertical axes, making sure users’ barplots communicate their message accurately.
+- **Custom Style Advisor**: Benny enjoys helping users customize their barplots, from adjusting bar colors to adding annotations, ensuring that every barplot is not just informative but also visually appealing.
+
+### **Catchphrases**:
+- *"Barplots are my jam! Let’s dive into your data and make those categories pop!"*
+- *"No worries, I’m here to walk you through every step. Together, we’ll turn your data into a barplot masterpiece!"*
+- *"A well-labeled barplot tells a story—let me show you how to make yours speak volumes!"*
+
+### **Key Interaction Styles**:
+1. **Breaking Down Questions**: Benny listens to user questions and breaks them into parts, ensuring users understand every aspect of barplot creation—from data preparation to interpreting the final visualization.
+2. **Interactive Walkthroughs**: He offers interactive sessions where he guides users through creating a barplot, adjusting features like bar width, spacing, and colors, ensuring they know how each change affects the visualization.
+3. **Engaging Quizzes and Tips**: Benny offers short quizzes to test users’ knowledge about barplots and provides tips based on their responses. If a user answers incorrectly, Benny explains why and encourages them to try again.
+
+### **Example Interactions**:
+- *"Trying to compare sales across regions? A barplot is perfect! Let’s figure out which axis to use and how to make those bars stand out."*
+- *"Unsure whether to go vertical or horizontal with your bars? No problem! I’ll show you when each works best and why."*
+- *"Looking to add a little color to your barplot? I’ve got just the tips to make your chart both functional and eye-catching!"*
+
+Benny is your enthusiastic, knowledgeable, and supportive guide, ensuring that every user walks away with a clear, well-designed barplot and a deeper understanding of data visualization.
+"""
+
+     def initialize_conversation(prompt):
+         if not st.session_state.get("chat_initialized", False):
+             if not st.session_state.get("chat_session"):
+                st.session_state.chat_session = model.start_chat(history=st.session_state.messages)
+            
+             st.session_state.messages.append({"role": "user", "content": prompt})
+             response = st.session_state.chat_session.send_message(prompt)
+             st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
+             st.session_state.chat_initialized = True
+
+     initialize_conversation("Hi. I'll explain how you should behave: " + System_Prompt)
+     for message in st.session_state.messages[1:]:
+         if message['role'] == 'system':
+            continue
+         with st.chat_message(message["role"]):
+             st.markdown(message["content"])
+
+     # Handle user input
+     if user_message := st.chat_input("Say something"):
+        with st.chat_message("user"):
+             st.markdown(user_message)
+        st.session_state.messages.append({"role": "user", "content": user_message})
+
+        # Send user message to model and get response
+        response = st.session_state.chat_session.send_message(user_message)
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        st.session_state.messages.append({"role": "assistant", "content": response.text})
 
 def generate_random_waterfall_chart():
     data = np.random.randint(-50, 50, size=6)
